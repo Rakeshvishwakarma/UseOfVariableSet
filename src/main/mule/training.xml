@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="9349eaa2-1a40-4d86-99a5-29c38e1e88e0" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="trainingFlow" doc:id="57f648d2-6959-4455-a4cd-eb68d7b8f13a" >
+		<http:listener doc:name="Listener" doc:id="4e7c3908-8069-4cb6-a195-dd27e9943c0c" config-ref="HTTP_Listener_config" path="/training" allowedMethods="GET"/>
+		<logger level="INFO" doc:name="Logger" doc:id="c6961e87-b55e-40b5-ab42-c58e7874fa26" message="Receive the Message"/>
+		<set-variable value="Rakesh" doc:name="Set Variable1" doc:id="d3fbc428-3572-4ef8-8fb4-7d9a256bae9c" variableName="string1"/>
+		<logger level="INFO" doc:name="variable set String1" doc:id="9a3469f4-56a7-4cc1-948d-0443bf21952e" message="#[vars.string1]"/>
+		<set-variable value="Vishwakarma" doc:name="Set Variable2" doc:id="25b9b33b-8eec-48cb-b9ad-a5a19a5b65f7" variableName="string2"/>
+		<logger level="INFO" doc:name="variable Set String2" doc:id="eeb405b9-b338-47ad-8127-c57938956e22" message="#[vars.string2]"/>
+		<set-payload value='#["World is waiting for " ++ vars.string1 ++" " ++ vars.string2]' doc:name="Set Payload" doc:id="f7f6f9c5-ed39-4215-9495-f8584fd7cd57" />
+	</flow>
+</mule>
