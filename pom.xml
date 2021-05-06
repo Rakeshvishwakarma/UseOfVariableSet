@@ -40,7 +40,7 @@
 						<password>Rk@nchan143</password>
 						<!-- Environment Parameter -->
 						<environment>Sandbox</environment>
-						<applicationName>CI-set420</applicationName>
+						<applicationName>CI-set</applicationName>
 						<businessGroup>Capgemini</businessGroup>
 						<workerType>MICRO</workerType>
 					</cloudHubDeployment>
